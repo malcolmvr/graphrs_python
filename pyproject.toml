@@ -20,3 +20,8 @@ binding = "PyO3"             # Default value, can be omitted
 
 [tool.distutils.bdist_wheel]
 py_limited_api = "cp39"
+
+[tool.cibuildwheel.macos]
+skip = "cp36-* cp37-*"
+before-all = "brew install homebrew/core/hdf5"
+repair-wheel-command = "delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}"
