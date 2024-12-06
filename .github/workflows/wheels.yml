@@ -2,6 +2,11 @@ name: Build
 
 on: [push, pull_request]
 
+env:
+  CIBW_BEFORE_BUILD_LINUX: curl -sSf https://sh.rustup.rs | sh -s -- -y
+  CIBW_ENVIRONMENT_LINUX: "PATH=$HOME/.cargo/bin:$PATH"
+  CIBW_SKIP: "cp36-* cp37-* cp38-* pp* *-win32 *-musllinux* *_i686"
+  
 jobs:
   build_wheels:
     name: Build wheels on ${{ matrix.os }}

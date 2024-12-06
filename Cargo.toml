@@ -10,5 +10,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 graphrs = "0.11.0"
-pyo3 = { version = "0.22.6", features = ["extension-module"] }
+pyo3 = { version = "0.22.6", features = ["extension-module", "abi3"] }
 

@@ -16,6 +16,7 @@ src/main*.rs
 dist/
 env/
 python/graphrs_python.egg-info/
+python/graphrs_python/_lib.*
 __pycache__/
 rust/target/
 test.py
