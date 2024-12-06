@@ -28,6 +28,7 @@ mod _lib {
             true => GraphSpecs::directed(),
             false => GraphSpecs::undirected(),
         };
+        specs.self_loops = true;
         if create_missing {
             specs.missing_node_strategy = graphrs::MissingNodeStrategy::Create;
         }
