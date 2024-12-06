@@ -34,13 +34,22 @@ class GraphrsPythonTest(unittest.TestCase):
         self.assertCountEqual(graph.int_to_name.keys(), [0, 1, 2, 3])
         self.assertCountEqual(graph.int_to_name.values(), ["n1", "n2", "n3", "n4"])
 
-    def test_betweenness_centrality(self):
+    def test_betweenness_centrality_1(self):
         nodes = ["n1", "n2", "n3", "n4"]
         edges = [("n1", "n2", 1.0), ("n2", "n3", 1.0), ("n3", "n4", 1.0)]
         graph = grs.create_graph_from_nodes_and_edges(nodes, edges, directed=True)
         self.assertEqual(
             grs.betweenness_centrality(graph, weighted=True, normalized=True),
             {"n1": 0.0, "n2": 0.3333333333333333, "n4": 0.0, "n3": 0.3333333333333333},
+        )
+
+    def test_betweenness_centrality_2(self):
+        nodes = [1, 2, 3, 4]
+        edges = [(1, 2, 1.0), (2, 3, 1.0), (3, 4, 1.0)]
+        graph = grs.create_graph_from_nodes_and_edges(nodes, edges, directed=True)
+        self.assertEqual(
+            grs.betweenness_centrality(graph, weighted=True, normalized=True),
+            {1: 0.0, 2: 0.3333333333333333, 4: 0.0, 3: 0.3333333333333333},
         )
 
     def test_closeness_centrality(self):

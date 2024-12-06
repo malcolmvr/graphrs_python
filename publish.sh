@@ -1,3 +1,8 @@
+echo "\n\nFirst, set the new version number in pyproject.toml and Cargo.toml."
+
+printf "%s " "When you've set the version numbers, press enter to continue."
+read ans
+
 python3 -m pip install --upgrade build
 python3 -m build
 rm ./dist/graphrs_python-*.whl
