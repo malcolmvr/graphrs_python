@@ -1,0 +1,14 @@
+[package]
+name = "graphrs_python"
+version = "0.0.1"
+edition = "2021"
+
+[lib]
+name = "_lib"
+path = "rust/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+graphrs = "0.11.0"
+pyo3 = { version = "0.22.6", features = ["extension-module"] }
+
