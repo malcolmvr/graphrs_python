@@ -5,7 +5,27 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "graphrs_python"
-version = "0.0.1"
+version = "0.11.0"
+description = "A Python module that wraps the high-performance `graphrs` Rust library."
+readme = "README.md"
+authors = [
+  {name = "Malcolm van Raalte", email = "malcolm@van.raalte.ca"},
+]
+license = {file = "LICENSE"}
+keywords = ["graph", "network", "graph theory", "network theory", "graph algorithms", "network algorithms"]
+classifiers = ["Development Status :: 5 - Production/Stable",
+              "Intended Audience :: Developers",
+              "License :: OSI Approved :: MIT License",
+              "Programming Language :: Python :: 3",
+              "Programming Language :: Rust",
+              "Topic :: Scientific/Engineering :: Information Analysis",
+              "Topic :: Scientific/Engineering :: Mathematics",
+              "Topic :: Software Development :: Libraries",
+              "Topic :: Software Development :: Libraries :: Python Modules",
+              "Typing :: Typed"]
+
+[project.urls]
+Repository = "https://github.com/malcolmvr/graphrs_python"
 
 [tool.setuptools.packages]
 # Pure Python packages/modules

@@ -1,7 +1,7 @@
 # pylint: disable=c-extension-no-member
 
 """
-A Python modules that wraps the `graphrs` Rust library.
+A Python module that wraps the high-performance `graphrs` Rust library.
 """
 
 from dataclasses import dataclass
