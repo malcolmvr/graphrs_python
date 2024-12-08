@@ -106,7 +106,7 @@ def betweenness_centrality(graph: Graph, weighted: bool, normalized: bool = True
 
 def closeness_centrality(graph: Graph, weighted: bool, wf_improved: bool = True) -> dict:
     """
-    Computes the betweenness centrality of a graph.
+    Computes the closeness centrality of a graph.
     """
     centralities = rust.closeness_centrality(graph.int_graph, weighted, wf_improved)
     if graph.int_to_name is None:
@@ -115,11 +115,13 @@ def closeness_centrality(graph: Graph, weighted: bool, wf_improved: bool = True)
         return {graph.int_to_name[k]: v for k, v in centralities.items()}
 
 
-def eigenvector_centrality(graph: Graph, weighted: bool) -> dict:
+def eigenvector_centrality(
+    graph: Graph, weighted: bool, max_iter: Optional[int] = None, tolerance: Optional[float] = None
+) -> dict:
     """
-    Computes the betweenness centrality of a graph.
+    Computes the eigenvector centrality of a graph.
     """
-    centralities = rust.eigenvector_centrality(graph.int_graph, weighted)
+    centralities = rust.eigenvector_centrality(graph.int_graph, weighted, max_iter, tolerance)
     if graph.int_to_name is None:
         return centralities
     else:

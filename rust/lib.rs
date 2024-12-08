@@ -51,17 +51,11 @@ mod _lib {
     }
 
     #[pyfunction]
-    fn eigenvector_centrality(graph: &Graph, weighted: bool) -> PyResult<HashMap<usize, f64>> {
+    #[pyo3(signature = (graph, weighted, max_iter=None, tolerance=None))]
+    fn eigenvector_centrality(graph: &Graph, weighted: bool, max_iter: Option<u32>, tolerance: Option<f64>) -> PyResult<HashMap<usize, f64>> {
         let eigenvector_centrality =
-            algorithms::centrality::eigenvector::eigenvector_centrality(&graph.graph, weighted, None, None);
+            algorithms::centrality::eigenvector::eigenvector_centrality(&graph.graph, weighted, max_iter, tolerance);
         Ok(eigenvector_centrality.unwrap())
     }
 
-    // #[pyfunction]
-    // fn betweenness_centrality(graphml_string: &str) -> PyResult<HashMap<String, f64>> {
-    //     let specs = GraphSpecs::undirected();
-    //     let graph = graphrs::readwrite::graphml::read_graphml_string(graphml_string, specs).unwrap();
-    //     let betweenness_centrality = algorithms::centrality::betweenness::betweenness_centrality(&graph, true, true);
-    //     Ok(betweenness_centrality.unwrap())
-    // }
 }
