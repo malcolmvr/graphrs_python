@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "graphrs_python"
-version = "0.11.0-post3"
+version = "0.11.1"
 description = "A Python module that wraps the high-performance `graphrs` Rust library."
 readme = "README.md"
 authors = [
