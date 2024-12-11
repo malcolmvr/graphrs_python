@@ -1,6 +1,6 @@
 [package]
 name = "graphrs_python"
-version = "0.11.4"
+version = "0.11.4-post1"
 edition = "2021"
 
 [lib]

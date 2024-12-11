@@ -66,6 +66,12 @@ class GraphrsPythonTest(unittest.TestCase):
             {"n1": 0.0, "n3": 0.4444444444444444, "n4": 0.5, "n2": 0.3333333333333333},
         )
 
+    def test_clustering(self):
+        graph = nx.karate_club_graph()
+        graph = grs.create_graph_from_networkx(graph, weight="weight")
+        clustering_scores = grs.clustering(graph, weighted=True)
+        self.assertAlmostEqual(clustering_scores[0], 0.06631121196141879, 6)
+
     def test_eigenvector_centrality(self):
         graph = nx.DiGraph()
         graph.add_edges_from(

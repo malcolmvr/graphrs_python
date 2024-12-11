@@ -115,6 +115,17 @@ def closeness_centrality(graph: Graph, weighted: bool, wf_improved: bool = True)
         return {graph.int_to_name[k]: v for k, v in centralities.items()}
 
 
+def clustering(graph: Graph, weighted: bool) -> dict:
+    """
+    Computes the clustering coefficient of the nodes in a graph.
+    """
+    clustering_scores = rust.clustering(graph.int_graph, weighted)
+    if graph.int_to_name is None:
+        return clustering_scores
+    else:
+        return {graph.int_to_name[k]: v for k, v in clustering_scores.items()}
+
+
 def constraint(graph: Graph, weighted: bool) -> dict:
     """
     Computes the constraint of a graph.

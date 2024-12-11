@@ -51,6 +51,13 @@ mod _lib {
     }
 
     #[pyfunction]
+    fn clustering(graph: &Graph, weighted: bool) -> PyResult<HashMap<usize, f64>> {
+        let clustering_scores =
+            algorithms::cluster::clustering(&graph.graph, weighted, None).unwrap();
+        Ok(clustering_scores)
+    }
+
+    #[pyfunction]
     fn constraint(graph: &Graph, weighted: bool) -> PyResult<HashMap<usize, f64>> {
         let constraints =
             algorithms::structural_holes::constraint::constraint(&graph.graph, None, weighted);
