@@ -115,6 +115,17 @@ def closeness_centrality(graph: Graph, weighted: bool, wf_improved: bool = True)
         return {graph.int_to_name[k]: v for k, v in centralities.items()}
 
 
+def constraint(graph: Graph, weighted: bool) -> dict:
+    """
+    Computes the constraint of a graph.
+    """
+    constraints = rust.constraint(graph.int_graph, weighted)
+    if graph.int_to_name is None:
+        return constraints
+    else:
+        return {graph.int_to_name[k]: v for k, v in constraints.items()}
+
+
 def eigenvector_centrality(
     graph: Graph, weighted: bool, max_iter: Optional[int] = None, tolerance: Optional[float] = None
 ) -> dict:

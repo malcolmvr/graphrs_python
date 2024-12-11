@@ -51,6 +51,13 @@ mod _lib {
     }
 
     #[pyfunction]
+    fn constraint(graph: &Graph, weighted: bool) -> PyResult<HashMap<usize, f64>> {
+        let constraints =
+            algorithms::structural_holes::constraint::constraint(&graph.graph, None, weighted);
+        Ok(constraints)
+    }
+
+    #[pyfunction]
     #[pyo3(signature = (graph, weighted, max_iter=None, tolerance=None))]
     fn eigenvector_centrality(graph: &Graph, weighted: bool, max_iter: Option<u32>, tolerance: Option<f64>) -> PyResult<HashMap<usize, f64>> {
         let eigenvector_centrality =

@@ -44,13 +44,19 @@ class GraphrsPythonTest(unittest.TestCase):
         )
 
     def test_betweenness_centrality_2(self):
-        nodes = [1, 2, 3, 4]
-        edges = [(1, 2, 1.0), (2, 3, 1.0), (3, 4, 1.0)]
+        nodes = [11, 12, 13, 14]
+        edges = [(11, 12, 1.0), (12, 13, 1.0), (13, 14, 1.0)]
         graph = grs.create_graph_from_nodes_and_edges(nodes, edges, directed=True)
         self.assertEqual(
             grs.betweenness_centrality(graph, weighted=True, normalized=True),
-            {1: 0.0, 2: 0.3333333333333333, 4: 0.0, 3: 0.3333333333333333},
+            {11: 0.0, 12: 0.3333333333333333, 13: 0.3333333333333333, 14: 0.0},
         )
+
+    def test_constraint(self):
+        graph = nx.karate_club_graph()
+        graph = grs.create_graph_from_networkx(graph, weight="weight")
+        constraints = grs.constraint(graph, weighted=True)
+        self.assertEqual(constraints[0], 0.19062348905638032)
 
     def test_closeness_centrality(self):
         edges = [("n1", "n2", 1.0), ("n2", "n3", 1.0), ("n3", "n4", 1.0)]
