@@ -47,12 +47,12 @@ jobs:
             make
             netpbm
             perl
-            python3${{ matrix.python-minor-version }}-cython
-            python3${{ matrix.python-minor-version }}-devel
-            python3${{ matrix.python-minor-version }}-ipython
-            python3${{ matrix.python-minor-version }}-numpy
-            python3${{ matrix.python-minor-version }}-sip
-            python3${{ matrix.python-minor-version }}-tkinter
+            python3.11-cython
+            python3.11-devel
+            python3.11-ipython
+            python3.11-numpy
+            python3.11-sip
+            python3.11-tkinter
             wget
             xorg-server-extra
             zlib-devel
@@ -62,8 +62,12 @@ jobs:
         with:
           dirs: 'C:\cygwin\bin;C:\cygwin\lib\lapack'
 
+      - name: Select Python version
+        run: |
+          ln -sf c:/cygwin/bin/python3.11 c:/cygwin/bin/python3
+    
       - name: Build wheels
-        run: python -m cibuildwheel --output-dir wheelhouse
+        run: python3 -m cibuildwheel --output-dir wheelhouse
 
       - uses: actions/upload-artifact@v4
         with:
