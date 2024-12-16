@@ -29,6 +29,7 @@ jobs:
 
       - name: Build wheels
         run: python3 -m cibuildwheel --output-dir wheelhouse
+        env:
           CIBW_BEFORE_ALL_WINDOWS: curl -L -o C:\Windows\system32\lapack.lib https://icl.utk.edu/lapack-for-windows/libraries/VisualStudio/3.5.0/Static-INTEL/Win64/LAPACK.lib
 
       - uses: actions/upload-artifact@v4
