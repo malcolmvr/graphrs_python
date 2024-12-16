@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-python@v5
 
       - name: Install lapack
-        run: sudo apt-get install liblapack-dev libblas-dev
+        run: sudo apt-get install liblapack-dev libblas-dev liblapack3 liblapacke-dev
 
       - name: Install cibuildwheel
         run: python -m pip install cibuildwheel==2.22.0
