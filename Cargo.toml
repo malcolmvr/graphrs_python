@@ -12,3 +12,5 @@ crate-type = ["cdylib"]
 graphrs = { version = "0.11.7", features = ["adjacency_matrix"] }
 pyo3 = { version = "0.22.6", features = ["extension-module", "abi3"] }
 
+[build]
+link = ["lapack", "blas"]
