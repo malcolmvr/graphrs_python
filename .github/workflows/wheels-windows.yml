@@ -67,9 +67,9 @@ jobs:
           ln -sf c:/cygwin/bin/python3.11 c:/cygwin/bin/python3
     
       - name: Build wheels
-        run: python3 -m cibuildwheel --output-dir wheelhouse
+        run: python3 -m cibuildwheel --output-dir C:\wheelhouse
 
       - uses: actions/upload-artifact@v4
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
-          path: ./wheelhouse/*.whl
+          path: C:\wheelhouse\*.whl
