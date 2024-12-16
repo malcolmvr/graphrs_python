@@ -72,4 +72,11 @@ mod _lib {
         Ok(eigenvector_centrality.unwrap())
     }
 
+    #[pyfunction]
+    fn spectral_gap(graph: &Graph, weighted: bool) -> PyResult<f64> {
+        let sg =
+            algorithms::resiliency::spectral_gap::spectral_gap(&graph.graph, weighted).unwrap();
+        Ok(sg)
+    }
+
 }

@@ -89,6 +89,12 @@ class GraphrsPythonTest(unittest.TestCase):
         self.assertAlmostEqual(result["n3"], 0.577349, 5)
         self.assertAlmostEqual(result["n4"], 0.577349, 5)
 
+    def test_spectral_gap(self):
+        graph = nx.karate_club_graph()
+        graph = grs.create_graph_from_networkx(graph, weight="weight")
+        sg = grs.spectral_gap(graph, weighted=True)
+        self.assertAlmostEqual(sg, 4.581245823406171, 6)
+
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()

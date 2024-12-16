@@ -150,6 +150,13 @@ def eigenvector_centrality(
         return {graph.int_to_name[k]: v for k, v in centralities.items()}
 
 
+def spectral_gap(graph: Graph, weighted: bool) -> float:
+    """
+    Computes the spectral gap of a graph.
+    """
+    return rust.spectral_gap(graph.int_graph, weighted)
+
+
 ### PRIVATE FUNCTIONS
 
 

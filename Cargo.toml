@@ -1,6 +1,6 @@
 [package]
 name = "graphrs_python"
-version = "0.11.4-post1"
+version = "0.11.7"
 edition = "2021"
 
 [lib]
@@ -9,6 +9,6 @@ path = "rust/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-graphrs = "0.11.4"
+graphrs = { version = "0.11.7", features = ["adjacency_matrix"] }
 pyo3 = { version = "0.22.6", features = ["extension-module", "abi3"] }
 
